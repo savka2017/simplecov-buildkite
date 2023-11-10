@@ -55,7 +55,7 @@ module SimpleCov::Buildkite
       if ENV['BUILDKITE']
         system 'buildkite-agent',
                'annotate',
-               '--context', ENV.fetch("SIMPLECOV_BUILDKITE_CONTEXT", "simplecov").gsub(/[[:space:]]/, '').underscore,
+               '--context', ENV.fetch("SIMPLECOV_BUILDKITE_CONTEXT", "simplecov").gsub(/\s/,'').downcase,
                '--style', 'info',
                message
       else
